@@ -3,7 +3,7 @@
 <head>
     <title>Box</title>
     <style>
-        th, td, a {
+        th, form, td {
             padding: 20px;
         }
     </style>
@@ -11,18 +11,18 @@
 <body>
 <th:block th:include="/menu"></th:block>
 <h2>Files</h2>
-    <table border="1">
+<table border="1">
     <tr>
         <form method="POST" action="upload" enctype="multipart/form-data">
             File to upload: <input type="file" name="file"></input>
             <input type="submit" value="Upload"></input>
             Press here to upload the file!
         </form>
-        <br></br>
+    </tr>
+    <tr>
         <th>FILE</th>
         <th>FILE NAME</th>
-        <th>URL</th>
-        <th>DOWNLOAD</th>
+        <th>DOWNLOAD LINK</th>
     </tr>
     <tr th:each="file : ${files}">
         <td th:utext="${file.getFile_id()}">..</td>

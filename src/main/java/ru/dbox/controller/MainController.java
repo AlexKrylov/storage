@@ -13,18 +13,9 @@ public class MainController {
     @Autowired
     private FileService fileService;
 
-    @Autowired
-    private UserService userService;
-
     @RequestMapping
     public String mainPage(Model model) {
         model.addAttribute("files", fileService.getAllFiles());
         return "main";
     }
-
-//    @RequestMapping(value = "/uploadPage", method = RequestMethod.GET)
-//    public String upload (Model model) {
-//        model.addAttribute("filesUpload");
-//        return "uploadPage";
-//    }
 }

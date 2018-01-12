@@ -21,7 +21,6 @@ public class UploadFileController {
     @Autowired
     private FileService fileService;
 
-
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public @ResponseBody
     String handleFileUpload(@RequestParam("file") MultipartFile file) {
