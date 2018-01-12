@@ -21,10 +21,6 @@ public class UploadFileController {
     @Autowired
     private FileService fileService;
 
-    @RequestMapping(value = "/uploadPage", method = RequestMethod.GET)
-    public String upload(Model model) {
-        return "uploadPage";
-    }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public @ResponseBody
@@ -34,7 +30,7 @@ public class UploadFileController {
                 byte[] bytes = file.getBytes();
                 String fileName = file.getOriginalFilename();
                 if (fileName != null) {
-                    fileService.addFile(new FileEntity(fileName, Generator.generateUnicUrlValue()));
+                    fileService.addFile(new FileEntity(fileName, Generator.generateUrl()));
                     File dir = new File("C:\\ShareFolder");
                     if (!dir.exists())
                         dir.mkdirs();
@@ -46,7 +42,7 @@ public class UploadFileController {
                 }
                 return "Вы успешно загрузили файл";
             } catch (Exception e) {
-                return "Вам не удалось загрузить файл => " + e.getMessage();
+                return "Вам не удалось загрузить файл " + e.getMessage();
             }
         } else {
             return "Вам не удалось загрузить файл, потому что файл пустой.";

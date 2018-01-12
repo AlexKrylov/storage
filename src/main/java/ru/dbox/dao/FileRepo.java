@@ -8,4 +8,5 @@ import ru.dbox.model.FileEntity;
 @Repository
 @Transactional
 public interface FileRepo extends JpaRepository<FileEntity, Integer> {
+    FileEntity findByUrl(String url);
 }

@@ -27,4 +27,10 @@ public class FileService {
     public void addFile(FileEntity entity) {
         repository.saveAndFlush(entity);
     }
+
+    public FileEntity getFileByUrl(String url) {
+        return repository.findByUrl(url);
+    }
+
+
 }
