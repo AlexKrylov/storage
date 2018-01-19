@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.dbox.service.FileService;
-import ru.dbox.service.UserService;
 
 @Controller
 @RequestMapping("/")

@@ -9,11 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "FILE_DIRECTORY", schema = "DIRECTORY")
 public class FileEntity implements Serializable, Comparable<FileEntity> {
-    public FileEntity() {}
-
-    public FileEntity(String file_name, String url) {
-        this.file_name = file_name;
-        this.url = url;
+    public FileEntity() {
     }
 
     @Id
@@ -25,6 +21,11 @@ public class FileEntity implements Serializable, Comparable<FileEntity> {
 
     @Column(name = "URL")
     private String url;
+
+    public FileEntity(String file_name, String url) {
+        this.file_name = file_name;
+        this.url = url;
+    }
 
     public String getUrl() {
         return url;

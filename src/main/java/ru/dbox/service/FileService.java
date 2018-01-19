@@ -28,9 +28,7 @@ public class FileService {
         repository.saveAndFlush(entity);
     }
 
-    public FileEntity getFileByUrl(String url) {
-        return repository.findByUrl(url);
+    public FileEntity getFileById (int id) {
+        return repository.findOne(id);
     }
-
-
 }

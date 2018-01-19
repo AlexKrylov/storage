@@ -2,7 +2,6 @@ package ru.dbox.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +28,7 @@ public class UploadFileController {
                 byte[] bytes = file.getBytes();
                 String fileName = file.getOriginalFilename();
                 if (fileName != null) {
-                    fileService.addFile(new FileEntity(fileName, Generator.generateUrl()));
+                    fileService.addFile(new FileEntity(file.getOriginalFilename(), Generator.generateUrl()));
                     File dir = new File("C:\\ShareFolder");
                     if (!dir.exists())
                         dir.mkdirs();
