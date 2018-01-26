@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.DateUtils;
 import ru.dbox.model.FileEntity;
 import ru.dbox.service.FileService;
 import ru.dbox.utils.Generator;
 
+import javax.xml.crypto.Data;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
 
 @Controller
 public class UploadFileController {
+    private Timestamp timestamp;
     @Autowired
     private FileService fileService;
 
@@ -28,7 +32,7 @@ public class UploadFileController {
                 byte[] bytes = file.getBytes();
                 String fileName = file.getOriginalFilename();
                 if (fileName != null) {
-                    fileService.addFile(new FileEntity(file.getOriginalFilename(), Generator.generateUrl()));
+                    fileService.addFile(new FileEntity(file.getOriginalFilename(), Generator.generateUrl(), 1, DateUtils.createNow()));
                     File dir = new File("C:\\ShareFolder");
                     if (!dir.exists())
                         dir.mkdirs();

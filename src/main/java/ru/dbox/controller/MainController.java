@@ -17,4 +17,9 @@ public class MainController {
         model.addAttribute("files", fileService.getAllFiles());
         return "main";
     }
+
+    @RequestMapping(value = "/login")
+    public String loginPage() {
+        return "login";
+    }
 }
