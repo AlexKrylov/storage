@@ -8,7 +8,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @PropertySource(value = {"classpath:application.properties"})
