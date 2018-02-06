@@ -11,7 +11,7 @@ public class MainController {
     @Autowired
     private FileService fileService;
 
-    @RequestMapping(value = "/main")
+    @RequestMapping
     public String mainPage(Model model) {
         model.addAttribute("files", fileService.getAllFiles());
         return "main";

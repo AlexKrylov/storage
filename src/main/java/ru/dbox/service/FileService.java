@@ -31,4 +31,8 @@ public class FileService {
     public FileEntity getFileById (int id) {
         return repository.findOne(id);
     }
+
+    public void deleteFileById(int id) {
+        repository.delete(id);
+    }
 }

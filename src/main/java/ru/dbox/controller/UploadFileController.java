@@ -20,13 +20,12 @@ import java.sql.Timestamp;
 
 @Controller
 public class UploadFileController {
-    private Timestamp timestamp;
     @Autowired
     private FileService fileService;
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public @ResponseBody
-    String handleFileUpload(@RequestParam("file") MultipartFile file) {
+    String FileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
