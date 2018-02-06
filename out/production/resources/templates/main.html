@@ -23,13 +23,11 @@
         <th>FILE</th>
         <th>FILE NAME</th>
         <th>DOWNLOAD LINK</th>
-        <th>DELETE FILE LINK</th>
     </tr>
     <tr th:each="file : ${files}">
         <td th:utext="${file.getFile_id()}">..</td>
         <td th:utext="${file.getFile_name()}">..</td>
         <td><a th:href="${'/download?id=' + file.getFile_id()}"><span th:text="${file.getUrl()}"></span></a></td>
-        <td><a th:href="${'/delete_file?id=' + file.getFile_id()}"><span th:text="${file.getFile_name()}"></span></a></td>
     </tr>
 </table>
 </body>

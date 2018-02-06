@@ -18,7 +18,7 @@ public class DownloadFileController {
     private FileService fileService;
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public StreamingResponseBody downloadFile(HttpServletResponse response, @Param("id") int id) throws IOException {
+    public StreamingResponseBody getSteamingFile(HttpServletResponse response, @Param("id") int id) throws IOException {
         FileEntity entity = fileService.getFileById(id);
         File downloadFile = new File("C:\\ShareFolder\\" + entity.getFile_name() + "");
         FileInputStream inputStream = new FileInputStream(downloadFile);
@@ -31,6 +31,7 @@ public class DownloadFileController {
             int nRead;
             byte[] data = new byte[1024];
             while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                System.out.println("Writing some bytes..");
                 outputStream.write(data, 0, nRead);
             }
         };
