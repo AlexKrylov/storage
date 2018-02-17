@@ -2,6 +2,7 @@ package ru.dbox.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class RoleEntity implements Serializable, Comparable<RoleEntity> {
     @Column(name = "ROLE")
     private String role;
 
-//    private Set<UserEntity> userEntitySet;
+    private ArrayList<UserEntity> userEntitySet;
 
     public RoleEntity(){}
 
@@ -34,14 +35,14 @@ public class RoleEntity implements Serializable, Comparable<RoleEntity> {
         this.role = role;
     }
 
-//    @ManyToMany(mappedBy = "ROLES")
-//    public Set<UserEntity> getUsers() {
-//        return userEntitySet;
-//    }
-//
-//    public void setUsers(Set<UserEntity> userEntities) {
-//        this.userEntitySet = userEntities;
-//    }
+    @ManyToMany(mappedBy = "ROLES")
+    public ArrayList<UserEntity> getUsers() {
+        return userEntitySet;
+    }
+
+    public void setUsers(ArrayList<UserEntity> userEntities) {
+        this.userEntitySet = userEntities;
+    }
 
     @Override
     public int compareTo(RoleEntity o) {

@@ -2,6 +2,7 @@ package ru.dbox.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class UserEntity implements Serializable, Comparable<UserEntity> {
     @Column(name = "EMAIL")
     private String email;
 
-   // private Set<RoleEntity> roleEntitySet;
+    private ArrayList<RoleEntity> roleEntitySet;
 
     public UserEntity() {
     }
@@ -37,7 +38,6 @@ public class UserEntity implements Serializable, Comparable<UserEntity> {
     public void setUserId(long userId) {
         this.userId = userId;
     }
-
 
     public String getLogin() {
         return login;
@@ -63,15 +63,15 @@ public class UserEntity implements Serializable, Comparable<UserEntity> {
         this.email = email;
     }
 
-//    @ManyToMany
-//    @JoinTable(name = "USER_AUTH", joinColumns = @JoinColumn(name = "USER_ID"))
-//    public Set<RoleEntity> getRoles() {
-//        return roleEntitySet;
-//    }
-//
-//    public void setRoles(Set<RoleEntity> roleEntitySet) {
-//        this.roleEntitySet = roleEntitySet;
-//    }
+    @ManyToMany
+    @JoinTable(name = "USER_AUTH", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "USR_ID"))
+    public ArrayList<RoleEntity> getRoles() {
+        return roleEntitySet;
+    }
+
+    public void setRoles(ArrayList<RoleEntity> roleEntitySet) {
+        this.roleEntitySet = roleEntitySet;
+    }
 
     @Override
     public int compareTo(UserEntity o) {
