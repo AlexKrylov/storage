@@ -8,6 +8,4 @@ import ru.dbox.service.UserService;
 public class UserController {
     @Autowired
     UserService userService;
-
-
 }

@@ -2,12 +2,25 @@ package ru.dbox.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "ACCOUNTS", schema = "ACCOUNT_MANAGER")
 public class UserEntity implements Serializable, Comparable<UserEntity> {
-    private String login;
+    @Id
+    @Column(name = "USER_ID")
     private long userId;
+
+    @Column(name = "LOGIN")
+    private String login;
+
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+   // private Set<RoleEntity> roleEntitySet;
 
     public UserEntity() {
     }
@@ -17,7 +30,15 @@ public class UserEntity implements Serializable, Comparable<UserEntity> {
         this.userId = userId;
     }
 
-    @Column(name = "LOGIN")
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+
     public String getLogin() {
         return login;
     }
@@ -26,15 +47,31 @@ public class UserEntity implements Serializable, Comparable<UserEntity> {
         this.login = login;
     }
 
-    @Id
-    @Column(name = "USER_ID")
-    public long getUserId() {
-        return userId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+//    @ManyToMany
+//    @JoinTable(name = "USER_AUTH", joinColumns = @JoinColumn(name = "USER_ID"))
+//    public Set<RoleEntity> getRoles() {
+//        return roleEntitySet;
+//    }
+//
+//    public void setRoles(Set<RoleEntity> roleEntitySet) {
+//        this.roleEntitySet = roleEntitySet;
+//    }
 
     @Override
     public int compareTo(UserEntity o) {

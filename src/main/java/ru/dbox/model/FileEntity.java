@@ -4,9 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.xml.crypto.Data;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Calendar;
 
 @Entity
@@ -28,6 +26,17 @@ public class FileEntity implements Serializable, Comparable<FileEntity> {
     @Column(name = "TIMESTAMP")
     private Calendar calendar;
 
+    public FileEntity() {
+    }
+
+    public FileEntity(String file_name, String url, int user_id, Calendar calendar) {
+        this.file_id = file_id;
+        this.file_name = file_name;
+        this.url = url;
+        this.user_id = user_id;
+        this.calendar = calendar;
+    }
+
     public int getUser_id() {
         return user_id;
     }
@@ -42,17 +51,6 @@ public class FileEntity implements Serializable, Comparable<FileEntity> {
 
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
-    }
-
-    public FileEntity(String file_name, String url, int user_id, Calendar calendar) {
-        this.file_id = file_id;
-        this.file_name = file_name;
-        this.url = url;
-        this.user_id = user_id;
-        this.calendar = calendar;
-    }
-
-    public FileEntity() {
     }
 
     public String getUrl() {
